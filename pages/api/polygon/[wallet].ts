@@ -2,7 +2,10 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { polygonApi } from 'services/axios';
 import { IReceivedNft } from 'types/nfts';
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+export default async function polygonWallet(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   if (!req.query.wallet) return;
   if (req.query.wallet.length < 42) {
     res.status(400).json({ error: 'Invalid wallet address' });
@@ -47,4 +50,4 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   }));
 
   res.status(200).json(nfts);
-};
+}

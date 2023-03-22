@@ -2,7 +2,10 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import { githubApi } from 'services/axios';
 import { projects } from 'utils/projects';
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+export default async function repositories(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   let response: any = [];
 
   for await (const project of projects) {
@@ -22,4 +25,4 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   );
 
   res.status(200).json(repos);
-};
+}

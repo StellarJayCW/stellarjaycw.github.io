@@ -29,7 +29,7 @@ const Nfts = ({ nfts = [] }: NftsProps) => {
     } else {
       router.push('/nfts');
     }
-  }, [walletAccount]);
+  }, [walletAccount, router]);
 
   return (
     <>

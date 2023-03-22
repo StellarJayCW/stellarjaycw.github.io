@@ -2,7 +2,10 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { ethereumApi } from 'services/axios';
 import { IReceivedNft } from 'types/nfts';
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+export default async function ethereumIndex(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   const apiKey = process.env.ALCHEMY_API_KEY;
   const ownerAddr = '0xBF7BF3d445aEc7B0c357163d5594DB8ca7C12D31';
   const { data } = await ethereumApi.get(
@@ -42,4 +45,4 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   }));
 
   res.status(200).json(nfts);
-};
+}
